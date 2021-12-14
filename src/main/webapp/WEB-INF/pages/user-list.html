@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user-list</title>
+    <style>table th, table td {padding: 5px;}</style>
+</head>
+<body>
+<div th:switch="${user}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>User</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>age</th>
+                <th>film</th>
+                <th>lastName</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${user}">
+                <td th:utext="${user.id}">id</td>
+                <td th:utext="${user.age}">age</td>
+                <td th:utext="${user.film}">film</td>
+                <td th:utext="${user.lastName}">lastName</td>
+                                <td><a th:href="@{user-update/{id}(id=${user.id})}">Update</a></td>
+                                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/user-create">Create</a></p>
+    </div>
+</body>
+</html>
