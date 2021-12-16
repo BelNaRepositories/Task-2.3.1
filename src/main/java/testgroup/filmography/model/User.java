@@ -1,6 +1,8 @@
 package testgroup.filmography.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -11,13 +13,10 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private int age;
 
-    @Column
     private String film;
 
-    @Column
     private String lastName;
 
     public User() {
